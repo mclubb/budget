@@ -1,0 +1,10 @@
+extends layout
+
+block content
+
+	h1 Ledger
+
+	ul
+		each item, i in items
+			li
+				#{item.date} - #{item.desc}

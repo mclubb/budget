@@ -1,0 +1,21 @@
+{
+  "name": "budget",
+  "version": "1.0.0",
+  "description": "Our Budget Program",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mike Clubb",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "express": "^4.15.4",
+    "express-react-views": "^0.10.2",
+    "express-session": "^1.15.5",
+    "mongodb": "^2.2.31",
+    "pug": "^2.0.0-rc.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
