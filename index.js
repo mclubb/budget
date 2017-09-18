@@ -2,6 +2,7 @@ var express = require('express');
 var session = require('express-session');
 var bodyparser = require('body-parser');
 var mongodb = require('mongodb');
+var config = require('./config');
 
 var app = express();
 
@@ -13,7 +14,9 @@ app.use(express.static('public'));
 
 app.use(session({
 	secret: 'money',
-	cookie: {}
+	cookie: {},
+        saveUninitialized: false,
+        resave: false
 }));
 
 app.use(bodyparser.urlencoded({extended:false}));
@@ -21,9 +24,11 @@ app.use(bodyparser.json());
 
 
 
-var ledger = require('./controllers/ledger');
 
-app.use('/ledger', ledger);
+app.use('/ledger', require('./controllers/ledger'));
+app.use('/buckets', require('./controllers/bucket'));
+app.use('/category', require('./controllers/category'));
+app.use('/import', require('./controllers/import'));
 
 app.get('/logout', function(req, res) {
 	req.session.destroy();
@@ -54,7 +59,22 @@ app.get('/', function(req, res) {
 	} else {
 		//res.send("Hello");
 	}
-	res.render('index');
+
+        // Testing list buckets 
+        var mongoClient = mongodb.MongoClient;
+        var mongodb_url = "mongodb://" + config.dbuser + ":" + config.dbpass + "@" + config.dbhost + ":27017/" + config.db;
+        mongoClient.connect(mongodb_url, function(err, db) {
+            if( err ) {
+                console.log(err);
+            }
+            var collection = db.collection('buckets');
+            collection.find({}).toArray(function(err, result) {
+                if( err ) {
+                    console.log(err);
+                }
+	        res.render('index', {"buckets": result});
+            });
+        });
 });
 
 app.listen(port,  function() {

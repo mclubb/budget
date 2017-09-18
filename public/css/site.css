@@ -1,0 +1,33 @@
+body {
+    padding-top: 3rem;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.right_align {
+    text-align: right;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2}
+
+.fa-5 {
+    font-size: 10em;
+    color: #4CAF50;
+}
+
+.category_row {
+    margin-bottom: 30px;
+}
+
+.category_card {
+    text-align: center;
+}

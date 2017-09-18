@@ -1,2 +1,9 @@
 data
 node_modules
+.gitignore.swp
+.DS_Store
+buckets.txt
+config.js
+package-lock.json
+*.swp
+

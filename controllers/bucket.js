@@ -10,12 +10,12 @@ router.get('/', function(req, res) {
 		if( err ) {
 			console.log(err);
 		}
-		var collection = db.collection('ledger');
+		var collection = db.collection('buckets');
 		collection.find({}).toArray(function(err, result) {
 			if( err ) {
 				console.log(err);
 			}
-			res.render('ledger', {"items": result});
+			res.render('buckets', {"buckets": result});
 		});
 	});
 
