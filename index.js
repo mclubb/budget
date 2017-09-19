@@ -9,7 +9,7 @@ var app = express();
 var port = 8000;
 
 app.set('view engine', 'jsx');
-app.engine('jsx', require('express-react-views').createEngine());
+app.engine('jsx', require('express-react-views').createEngine({beautify: true}));
 app.use(express.static('public'));
 
 app.use(session({

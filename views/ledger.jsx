@@ -10,11 +10,11 @@ class LedgerComponent extends React.Component{
 
     render() {
         var records = this.state.items.map( (record) => 
-            <tr>
+            <tr key={record._id.toString()} id={record._id.toString()}>
                 <td>{new Date(record.date).toLocaleDateString('en-US', {'timeZone':'UTC'})}</td>
                 <td>{record.desc}</td>
                 <td>{record.amount}</td>
-                <td><BucketSelect buckets={this.props.buckets} /></td>
+                <td><BucketSelect buckets={this.props.buckets} defaultValue={record.bucket}/></td>
             </tr>
         );
             return (

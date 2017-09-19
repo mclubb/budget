@@ -7,10 +7,10 @@ class BucketSelect extends React.Component{
 
     render() {
         var bucketlist = this.props.buckets.map( (bucket) =>
-    <option>{bucket.bucket}</option>
+    <option key={bucket._id.toString()}>{bucket.bucket}</option>
                 );
         return (
-            <select name="bucket">
+            <select name="bucket" defaultValue={this.props.defaultValue}>
                 <option>Choose One</option>
             {bucketlist}
             </select>

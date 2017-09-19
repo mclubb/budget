@@ -47,9 +47,11 @@ router.post('/', upload.single('ledgerfile'),function(req, res) {
 									'amount': val['Amount']
 								}, 
 								{
-									'date': new Date(post_date).toISOString(), 
-									'desc': val['Description'], 
-									'amount': val['Amount']
+                                    $set: {
+                                        'date': new Date(post_date).toISOString(), 
+                                        'desc': val['Description'], 
+                                        'amount': val['Amount']
+                                    }
 								},
 								{
 									upsert: true
