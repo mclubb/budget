@@ -6,7 +6,7 @@ class ImportComponent extends React.Component{
 		return (
 			<MasterLayout>
                                 <h2>Import Ledger File</h2>
-                                <form action="/import" method="post">
+                                <form action="/import" method="post" encType="multipart/form-data">
                                 <input type="file" name="ledgerfile" />
                                 <button type="submit">Submit</button>
                                 </form>
